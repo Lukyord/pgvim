@@ -44,6 +44,11 @@ $page_index = ($page == basename(dirname($_SERVER['PHP_SELF']), "/") || $page ==
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/about-history.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/learning-program.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/page.css?v=<?php echo time(); ?>">
+
+
     <!-- JS:LIBRARY -->
     <script src="<?php echo $root; ?>assets/js/library/modernizr-custom.js"></script>
     <script src="<?php echo $root; ?>assets/js/library/jquery-3.6.0.min.js"></script>

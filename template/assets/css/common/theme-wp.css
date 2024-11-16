@@ -1,4 +1,4 @@
-/*WP PLUGIN:COOKIE====================*/
+/*WP PLUGIN:COOKIE==================== */
 .cky-consent-container {
     width: 390px !important;
     width: calc(100vw - var(--spacing-container) * 2) !important;
@@ -206,7 +206,7 @@
     }
 }
 
-/*WP PLUGIN:WPCF7====================*/
+/*WP PLUGIN:WPCF7==================== */
 .wpcf7-form .wpcf7-form-control-wrap {
     position: relative;
     display: block;
@@ -255,7 +255,7 @@ form.wpcf7-form.submitting button[type="submit"] {
     }
 }
 
-/*WP PAGINATION====================*/
+/*WP PAGINATION==================== */
 .wp-pagenavi {
     --button-height: 52px;
     margin: 0;

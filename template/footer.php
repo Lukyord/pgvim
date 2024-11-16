@@ -1,7 +1,63 @@
 <footer id="footer">
     <div class="footer-nav">
+        <div class="contact-and-links">
+            <div class="contact">
+                <address>
+                    Princess Galyani Vadhana Institute of Music,<br>
+                    2010 Arun Amarin Rd, Bang Yi Khan, Bang Phlat,<br>
+                    Bangkok 10700 THAILAND
+                </address>
+                <div class="tel-and-email">
+                    <a href="tel:+6624478594" class="tel">(02) 447 8594-7</a>
+                    <a href="tel:+6624478598" class="tel">(02) 447 8598</a>
+                    <a href="mailto:saraban@pgvim.ac.th" class="email">saraban@pgvim.ac.th</a>
+                </div>
+                <div class="socials">
+                    <a href="https://www.instagram.com/pgvim_music" target="_blank"><i class="size-icon-20 ic ic-instagram"></i></a>
+                    <a href="https://www.facebook.com/PGVIMusic" target="_blank"><i class="size-icon-20 ic ic-facebook"></i></a>
+                    <a href="https://www.youtube.com/@PGVIMChannel" target="_blank"><i class="size-icon-20 ic ic-youtube"></i></a>
+                </div>
+            </div>
+            <div class="links">
+                <div class="accordion-container trigger-all">
+                    <div class="accordion">
+                        <h3 class="entry-title hidden-device-md">ABOUT US</h3>
+                        <h3 class="pc-title show-md">ABOUT US</h3>
+                        <div class="entry-panel">
+                            <ul class="footer-links">
+                                <li><a href="<?php echo $root; ?>about-history.php">History</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
+                    <div class="accordion">
+                        <h3 class="entry-title hidden-device-md">LEARNING & OPPORTUNITIES</h3>
+                        <h3 class="pc-title show-md">LEARNING & OPPORTUNITIES</h3>
+                        <div class="entry-panel">
+                            <ul class="footer-links">
+                                <li><a href="<?php echo $root; ?>learning-program.php">Bachelor of Music Program (B.M.)</a></li>
+                                <li><a href="https://www.pgvim.ac.th/postgrad/" target="_blank">Master of Music (M.M.)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <?php
+        $staff = [
+            "link" => $root . "index.php",
+            "is-footer" => "true",
+            "extra-class" => "footer left animate fadeIn"
+        ];
+
+        include($root . "include/element-staff-small.php");
+        ?>
+
+        <div class="privacy-and-copyright">
+            <a href="<?php echo $root; ?>page.php" class="privacy-link">Privacy Policy</a>
+            <p class="copyright">© 2024 Princess Galyani Vadhana Institute of Music. All rights reserved. ::*</p>
+        </div>
     </div>
 </footer>
 
@@ -39,7 +95,8 @@
 <script src="<?php echo $root; ?>assets/js/common/theme-wp.js?v=<?php echo time(); ?>"></script>
 <script src="<?php echo $root; ?>assets/js/common/util.js?v=<?php echo time(); ?>"></script>
 <script src="<?php echo $root; ?>assets/js/index.js?v=<?php echo time(); ?>"></script>
-
+<script src="<?php echo $root; ?>assets/js/about-history.js?v=<?php echo time(); ?>"></script>
+<script src="<?php echo $root; ?>assets/js/learning-program.js?v=<?php echo time(); ?>"></script>
 
 </body>
 

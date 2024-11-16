@@ -1,0 +1,45 @@
+/* PAGE ==================== */
+
+/* PAGE CONTENT ==================== */
+/* #page-content .swiper {
+    overflow: visible !important;
+    width: fit-content;
+}
+
+#page-content .swiper .swiper-wrapper {
+    display: flex;
+    transform: none !important;
+    justify-content: center;
+} */
+
+/* Tabs */
+#page-content .illustration {
+    position: absolute;
+}
+
+#page-content .illustration.var-4 {
+    bottom: var(--spacing-120);
+    left: 0;
+}
+
+#page-content .illustration.var-1 {
+    bottom: var(--spacing-60);
+    left: var(--spacing-80);
+}
+
+#page-content .illustration.var-6 {
+    bottom: var(--spacing-100);
+    left: var(--spacing-160);
+}
+
+/* Tab Contents */
+#page-content .tab-container .tab-contents {
+    width: 58.2089552239%;
+    flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+    #page-content .tab-container .tab-contents {
+        width: 100%;
+    }
+}

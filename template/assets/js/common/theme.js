@@ -19,6 +19,12 @@ jQuery(function ($) {
         }
     }
     pageAnimate();
+
+    $(window).on("load", function () {
+        setTimeout(function () {
+            $(window).scrollTop(0);
+        }, 100);
+    });
 });
 
 {
@@ -451,7 +457,7 @@ jQuery(function ($) {
 /* TAB */
 jQuery(function ($) {
     var tabGroupParent = null;
-    var h = $(window).outerHeight() / 4;
+    var h = $(window).outerHeight() / 16;
 
     function tabActive(elem) {
         var tabGroupParent = $(elem).parents(".tab-container");
@@ -495,8 +501,13 @@ jQuery(function ($) {
     }
 
     $(".tab-link").click(function (e) {
-        e.preventDefault();
         var _id = $(this).attr("href");
+
+        if (_id.startsWith("http") || _id.startsWith("www")) {
+            return;
+        }
+
+        e.preventDefault();
 
         showTab(_id);
 
@@ -686,9 +697,34 @@ jQuery(function ($) {
                 });
             });
 
+        if ($(this).hasClass("trigger-all")) {
+            $(this).find("> .accordion").addClass("active");
+            $(this).find("> .accordion > .entry-panel").show();
+        }
+
         if ($(this).hasClass("trigger-first")) {
             $(this).find("> .accordion:first-child").addClass("active");
             $(this).find("> .accordion:first-child > .entry-panel").show();
+        }
+
+        if ($(this).hasClass("trigger-second")) {
+            $(this).find("> .accordion:nth-child(2)").addClass("active");
+            $(this).find("> .accordion:nth-child(2) > .entry-panel").show();
+        }
+
+        var triggerClass = $(this)
+            .attr("class")
+            .match(/trigger-first-(\d+)/);
+
+        if (triggerClass) {
+            var n = parseInt(triggerClass[1], 10);
+
+            $(this)
+                .find("> .accordion:nth-child(-n+" + n + ")")
+                .addClass("active");
+            $(this)
+                .find("> .accordion:nth-child(-n+" + n + ") > .entry-panel")
+                .show();
         }
     });
 });
@@ -751,12 +787,12 @@ jQuery(function ($) {
 /* VENDOR */
 jQuery(function ($) {
     //RELLAX
-    // if ($(".rellax").length) {
-    //   new Rellax(".rellax", {
-    //     center: true,
-    //     speed: -1,
-    //   });
-    // }
+    if ($(".rellax").length) {
+        new Rellax(".rellax", {
+            center: true,
+            speed: -1,
+        });
+    }
 
     //COUNTUP
     // if ($(".countup").length) {
@@ -773,24 +809,16 @@ jQuery(function ($) {
                 var _this = $(this);
                 var marqueeWrapper = _this.closest(".marquee-wrapper");
 
-                function initializeMarquee() {
-                    if (!marqueeWrapper.hasClass("initialized")) {
-                        marqueeWrapper.liMarquee({
-                            circular: true,
-                            startShow: true,
-                            scrollDelay: 150,
-                            scrollStop: false,
-                        });
-                        marqueeWrapper.addClass("initialized");
-                    } else {
-                        if (marqueeWrapper.hasClass("initialized")) {
-                            marqueeWrapper.liMarquee("destroy");
-                            marqueeWrapper.removeClass("initialized");
-                        }
-                    }
+                function init() {
+                    marqueeWrapper.liMarquee({
+                        circular: true,
+                        startShow: true,
+                        scrollDelay: 150,
+                        scrollStop: false,
+                    });
                 }
 
-                onWindowResize(initializeMarquee, 300, true);
+                init();
             });
         }
     });
@@ -1416,6 +1444,106 @@ jQuery(function ($) {
         e.stopPropagation();
         closeBreadcrumb((fadeOut = true));
     });
+});
+
+// LOADING SCREEN
+jQuery(function ($) {
+    if ($("#loading-screen").length) {
+        $("#loading-screen").each(function () {
+            function forceFinishLoad() {
+                $("html").removeClass("no-scroll");
+                $("#loading-screen").addClass("loaded");
+
+                setTimeout(function () {
+                    $("#loading-screen").hide();
+                }, 1500);
+            }
+
+            $("#loading-screen").on("click", forceFinishLoad);
+
+            if ($(window).width() > 991) {
+                $("html").addClass("no-scroll");
+
+                // get top position of .staff
+                var staffTop = $(".staff").offset().top;
+                $(this).css("--logo-top", staffTop + "px");
+
+                setTimeout(function () {
+                    forceFinishLoad();
+                }, 2000);
+            }
+        });
+    }
+});
+
+// TOGGLE READMORE MOBILE
+jQuery(function ($) {
+    $(".read-more-toggle a").click(function (e) {
+        e.preventDefault();
+        var _this = $(this);
+        var description = _this.closest(".section-header").find(".description");
+
+        description.toggleClass("expanded");
+
+        var textReadMore = _this.data("text-read-more");
+        var textShowLess = _this.data("text-show-less");
+
+        if (description.hasClass("expanded")) {
+            _this.text(textShowLess);
+        } else {
+            _this.text(textReadMore);
+        }
+    });
+});
+
+// CTA TABS SWIPER
+jQuery(function ($) {
+    if ($(".cta-tabs.swiper").length) {
+        $(".cta-tabs.swiper").each(function () {
+            var $this = $(this);
+            var swiper = new Swiper($this[0], {
+                slidesPerView: "auto",
+                spaceBetween: 0,
+                effect: "slide",
+                speed: 1000,
+                centeredSlides: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+
+            $this.find(".swiper-slide").on("click", function () {
+                const slideIndex = $(this).index();
+                swiper.slideTo(slideIndex);
+            });
+        });
+    }
+});
+
+// SCROLL TO TOP BUTTON
+jQuery(function ($) {
+    if ($(".scroll-top-button").length) {
+        $(".scroll-top-button .arrow-button").click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 800);
+        });
+    }
+});
+
+// TWO SIDE TABS SWIPER
+jQuery(function ($) {
+    if ($(".two-side.tab-container .swiper").length) {
+        $(".two-side.tab-container .swiper").each(function () {
+            var $this = $(this);
+
+            var swiper = new Swiper($this[0], {
+                slidesPerView: "auto",
+                spaceBetween: 0,
+                effect: "slide",
+                speed: 1000,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+        });
+    }
 });
 
 // EFFECT

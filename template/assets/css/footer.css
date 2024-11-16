@@ -1,5 +1,119 @@
-/* FOOTER ====================*/
-#footer {
-}
+/* FOOTER ==================== */
 .footer-nav {
+    background-color: var(--color-blue);
+    padding: var(--spacing-60) 0;
+    color: var(--color-white);
+}
+
+html.no-touchevents .footer-nav a:hover {
+    opacity: 0.5;
+    color: inherit;
+}
+
+/* Contacts and Links */
+.footer-nav .contact-and-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--page-padding);
+}
+
+/* Contact */
+.footer-nav .contact-and-links .contact {
+    display: flex;
+    flex-direction: column;
+    grid-gap: var(--spacing-20);
+}
+
+.footer-nav .contact-and-links .contact .tel-and-email {
+    width: var(--180px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--spacing-16);
+}
+
+.footer-nav .contact-and-links .contact .tel-and-email .email {
+    grid-column: span 2;
+}
+
+/* Links */
+.footer-nav .contact-and-links .links .accordion-container {
+    display: flex;
+    grid-gap: var(--spacing-30);
+}
+
+.footer-nav .links .accordion-container .footer-links {
+    display: flex;
+    flex-direction: column;
+    grid-gap: var(--spacing-6);
+    margin-top: var(--spacing-16);
+}
+
+.footer-nav .links .accordion-container .footer-links a {
+    opacity: 0.5;
+}
+
+html.no-touchevents .footer-nav .links .footer-links a:hover {
+    opacity: 1;
+}
+
+/* Staff Small */
+.footer-nav .staff-small {
+    margin-top: var(--spacing-80);
+}
+
+/* Privacy and Copyrights */
+.footer-nav .privacy-and-copyright {
+    margin-top: var(--spacing-24);
+    padding: 0 var(--page-padding);
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-nav .privacy-and-copyright *:is(.privacy-link, .copyright) {
+    opacity: 0.5;
+}
+
+html.no-touchevents .footer-nav .privacy-and-copyright .privacy-link:hover {
+    opacity: 1;
+}
+
+@media (max-width: 991px) {
+    /* Contacts and Links */
+    .footer-nav .contact-and-links {
+        flex-direction: column;
+        grid-gap: var(--spacing-36);
+    }
+
+    /* Contact */
+    /* Links */
+    .footer-nav .contact-and-links .links .accordion-container {
+        flex-direction: column;
+        grid-gap: 0;
+    }
+
+    .footer-nav .links .accordion-container .accordion {
+        --title-color: var(--color-white);
+        --title-color-active: var(--color-white);
+        --border-color: var(--color-white);
+    }
+
+    .footer-nav .links .accordion-container .accordion .entry-title {
+        opacity: 1 !important;
+    }
+
+    .footer-nav .links .accordion-container .footer-links {
+        margin-top: 0;
+    }
+
+    /* Staff Small */
+    .footer-nav .staff-small {
+        margin-top: var(--spacing-50);
+    }
+
+    /* Privacy and Copyrights */
+    .footer-nav .privacy-and-copyright {
+        flex-direction: column;
+        margin-top: var(--spacing-36);
+        grid-gap: var(--spacing-30);
+    }
 }
